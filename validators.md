@@ -34,7 +34,7 @@ If you get the following message, it means that you have no tokens, or your node
 
 ### **Backup Validator Key** <a href="#backup-validator-key" id="backup-validator-key"></a>
 
-Before **** creating your validator, [backup your validator key.](https://docs.scrt.network/secret-network-documentation/node-runners/node-setup/best-practices/validator-backup)WARNING: if you don't backup your key and your node goes down, you will lose your validator and have to start a new one.
+Before **** creating your validator, backup your validator key.WARNING: if you don't backup your key and your node goes down, you will lose your validator and have to start a new one.
 
 ### **Create Validator** <a href="#create-validator" id="create-validator"></a>
 
