@@ -6,8 +6,8 @@ First thing is to import the packages. \
 Add this to your cargo.toml under dependencies.
 
 ```
-nois-proxy = { path = "../../contracts/nois-proxy", features = ["library"]}
-nois-toolbox = { path = "../nois-contracts/packages/nois-toolbox" }
+[dependencies]
+nois = "0.4.0"
 ```
 
 #### Configure the proxy-address
@@ -90,7 +90,7 @@ pub fn execute_roll_dice(
 
     let res = Response::new().add_message(WasmMsg::Execute {
         contract_addr: nois_proxy.into(),
-        msg: to_binary(&nois_proxy::ExecuteMsg::GetNextRandomness {
+        msg: to_binary(&nois::ProxyExecuteMsg::GetNextRandomness {
             callback_id: Some(job_id),
         })?,
         funds: vec![],
@@ -112,7 +112,7 @@ ExecuteMsg::Receive(NoisCallbackMsg {
 
 and in msg.rs import NoisCallbackMsg from the nois-proxy package that we included at the beginning and update the Execute msg&#x20;
 
-<pre><code>use nois_proxy::NoisCallbackMsg;
+<pre><code>use nois::NoisCallbackMsg;
 pub enum ExecuteMsg {
 <strong>   Receive(NoisCallbackMsg),
 </strong>   RollDice {..},
