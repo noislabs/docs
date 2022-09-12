@@ -1,5 +1,7 @@
 # Contract implementation
 
+Double dice game example [https://github.com/noislabs/double-dice-demo](https://github.com/noislabs/double-dice-demo)
+
 #### Import the nois packages
 
 First thing is to import the packages. \

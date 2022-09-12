@@ -1,6 +1,6 @@
 # How it works
 
-
+<figure><img src=".gitbook/assets/Twitter Header.png" alt=""><figcaption></figcaption></figure>
 
 The following steps are taken to get the randomness:
 
