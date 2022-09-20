@@ -3,10 +3,6 @@
 Install docker from this [link](https://docs.docker.com/engine/install/ubuntu/)
 
 ```bash
-docker login
-```
-
-```bash
 #Make sure you have tokens in your wallet
 export MNEMONIC='<YOUR_MNEMONICS_HERE>'
 #check https://docs.nois.network/networks-and-contracts. nois-oracle contract
