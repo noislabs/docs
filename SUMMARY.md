@@ -1,12 +1,21 @@
 # Table of contents
 
-* [Introduction](README.md)
-* [How it works](how-it-works.md)
-* [Developers](developers/README.md)
-  * [Overview](developers/overview.md)
-  * [Contract implementation](developers/contract-implementation.md)
-  * [Nois Toolbox](developers/nois-toolbox.md)
-* [Running a Fullnode](running-a-fullnode.md)
-* [Becoming A Validator](validators.md)
-* [Networks](testnet.md)
-* [Drand](drand.md)
+* [👋 Welcome to Nois Network](README.md)
+
+## Overview
+
+* [💡 How it works](overview/how-it-works.md)
+* [🎲 Drand](overview/drand.md)
+
+***
+
+* [🌐 Networks and contracts](networks-and-contracts/README.md)
+  * [⛓ Relayed Chains](networks-and-contracts/relayed-chains.md)
+
+## Use Cases
+
+* [🛠 For DAPP Developers](use-cases/for-dapp-developers/README.md)
+  * [📃 Contract implementation](use-cases/for-dapp-developers/contract-implementation.md)
+  * [📦 Nois Toolbox](use-cases/for-dapp-developers/nois-toolbox.md)
+* [🏗 For Nois Developers](use-cases/for-nois-developers.md)
+* [🔐 For validators](use-cases/for-validators.md)

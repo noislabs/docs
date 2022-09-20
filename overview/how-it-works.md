@@ -1,6 +1,6 @@
-# How it works
+# 💡 How it works
 
-<figure><img src=".gitbook/assets/Twitter Header.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://1923222875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FsvlZuSMSUX5tUL5iML2q%2Fuploads%2FH8ofEjHeanKzyNfktImh%2FTwitter%20Header.png?alt=media&#x26;token=19725dc2-8d86-45ae-8ef0-acd027086764" alt=""><figcaption></figcaption></figure>
 
 The following steps are taken to get the randomness:
 
