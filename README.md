@@ -29,3 +29,7 @@ We've put together some helpful guides for you to get what you need quickly and 
 {% content-ref url="use-cases/for-validators.md" %}
 [for-validators.md](use-cases/for-validators.md)
 {% endcontent-ref %}
+
+{% content-ref url="use-cases/for-bot-runners.md" %}
+[for-bot-runners.md](use-cases/for-bot-runners.md)
+{% endcontent-ref %}
