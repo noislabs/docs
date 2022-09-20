@@ -6,8 +6,12 @@ Double dice game example [https://github.com/noislabs/double-dice-demo](https://
 
 First thing is to import the packages. Add this to your cargo.toml under dependencies.
 
-<pre class="language-rust" data-title="cargo.toml"><code class="lang-rust"><strong>[dependencies]
-</strong>nois = "0.5.0"</code></pre>
+{% code title="cargo.toml" %}
+```rust
+[dependencies]
+nois = "0.5.0"
+```
+{% endcode %}
 
 #### Configure the proxy address <a href="#import-the-nois-packages" id="import-the-nois-packages"></a>
 
@@ -23,7 +27,7 @@ import the **nois-proxy**.
 
 {% code title="contract.rs" %}
 ```rust
-use crate::state::{NOIS_PROXY, DOUBLE_DICE_OUCOME};
+use crate::state::{NOIS_PROXY};
 ```
 {% endcode %}
 
@@ -31,18 +35,24 @@ Still in the contract.rs add the instantiation msg which validates the nois-prox
 
 {% code title="contract.rs" %}
 ```rust
-pub struct InstantiateMsg {
-#[cfg_attr(not(feature = "library"), entry_point)]
 pub fn instantiate(
-...
+    deps: DepsMut,
+    _env: Env,
+    info: MessageInfo,
+    msg: InstantiateMsg,
 ) -> Result<Response, ContractError> {
+    // The nois-proxy abstracts the IBC and nois chain away from this application
     let nois_proxy_addr = deps
         .api
         .addr_validate(&msg.nois_proxy)
         .map_err(|_| ContractError::InvalidProxyAddress)?;
     set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
     NOIS_PROXY.save(deps.storage, &nois_proxy_addr)?;
-    ...
+
+    Ok(Response::new()
+        .add_attribute("method", "instantiate")
+        .add_attribute("owner", info.sender))
+}
 
 ```
 {% endcode %}
@@ -73,7 +83,10 @@ So the RollDice message gets the id as a parameter
 
 {% code title="contract.rs" %}
 ```rust
-ExecuteMsg::RollDice { job_id} => execute_roll_dice(deps, env, info, job_id),ExecuteMsg::RollDice { job_id} => execute_roll_dice(deps, env, info, job_id),
+match msg {
+        //RollDice should be called by a player who wants to roll the dice
+        ExecuteMsg::RollDice { job_id } => execute_roll_dice(deps, env, info, job_id),
+    }
 ```
 {% endcode %}
 
@@ -104,6 +117,8 @@ Call the GetNextRandomness(id) from the triggering function
 
 {% code title="contract.rs" %}
 ```rust
+//execute_roll_dice is the function that will trigger the process of requesting randomness.
+//The request from randomness happens by calling the nois-proxy contract
 pub fn execute_roll_dice(
     deps: DepsMut,
     _env: Env,
@@ -112,14 +127,16 @@ pub fn execute_roll_dice(
 ) -> Result<Response, ContractError> {
     let nois_proxy = NOIS_PROXY.load(deps.storage)?;
 
-    let res = Response::new().add_message(WasmMsg::Execute {
+    let response = Response::new().add_message(WasmMsg::Execute {
         contract_addr: nois_proxy.into(),
-        msg: to_binary(&nois::ProxyExecuteMsg::GetNextRandomness {
-            callback_id: Some(job_id),
-        })?,
+        //GetNextRandomness requests the randomness from the proxy
+        //The job id is needed to know what randomness we are referring to upon reception in the callback
+        //In this example, the job_id represents one round of dice rolling.
+        msg: to_binary(&ProxyExecuteMsg::GetNextRandomness { job_id })?,
+        //In this example the randomness is for free. You don't need to send any funds to request randomness
         funds: vec![],
     });
-    Ok(res)
+    Ok(response)
 }
 ```
 {% endcode %}
@@ -130,10 +147,8 @@ The nois-proxy contract sends the callback on the Receive entrypoint. Therefore,
 
 {% code title="contract.rs" %}
 ```rust
-ExecuteMsg::Receive(NoisCallbackMsg {
-           id: callback_id,
-           randomness,
-       }) => execute_receive(deps, env, info, callback_id, randomness),
+//Receive should be called by the proxy contract. The proxy is forwarding the randomness from the nois chain to this contract.
+ExecuteMsg::Receive { callback } => execute_receive(deps, env, info, callback),
 ```
 {% endcode %}
 
@@ -141,11 +156,14 @@ and in msg.rs import NoisCallbackMsg from the nois-proxy package that we include
 
 {% code title="msg.ts" %}
 ```rust
-use nois::NoisCallbackMsg;
+use nois::NoisCallback;
 
 pub enum ExecuteMsg {
-   Receive(NoisCallbackMsg),
-   RollDice {..},//defined earlier
+    // job_id for this job which allows for gathering the results.
+    RollDice { job_id: String },
+    //callback contains the randomness from drand (HexBinary) and job_id
+    //callback should only be allowed to be called by the proxy contract
+    Receive { callback: NoisCallback },
 }
 ```
 {% endcode %}
@@ -167,6 +185,34 @@ pub fn execute_receive(
 
    //Congrats, you have access to
    // a publicly-verifiable, unbiasable and decentralised randomness
+
+    Ok(Response::default())
+}
+//The execute_receive function is triggered upon reception of the randomness from the proxy contract
+//The callback contains the randomness from drand (HexBinary) and the job_id
+pub fn execute_receive(
+    deps: DepsMut,
+    _env: Env,
+    info: MessageInfo,
+    callback: NoisCallback,
+) -> Result<Response, ContractError> {
+    //load proxy address from store
+    let proxy = NOIS_PROXY.load(deps.storage)?;
+    //callback should only be allowed to be called by the proxy contract
+    //otherwise anyone can cut the randomness workflow and cheat the randomness by sending the randomness directly to this contract
+    ensure_eq!(info.sender, proxy, ContractError::UnauthorizedReceive);
+    let randomness: [u8; 32] = callback
+        .randomness
+        .to_array()
+        .map_err(|_| ContractError::InvalidRandomness)?;
+    //ints_in_range provides a list of random numbers following a uniform distribution within a range.
+    //in this case it will provide uniformly randomized numbers between 1 and 6
+    let [dice_outcome_1, dice_outcome_2] = ints_in_range(randomness, 1..=6);
+    //summing the dice to fit the real double dice probability distribution from 2 to 12
+    let double_dice_outcome = dice_outcome_1 + dice_outcome_2;
+
+    //Congrats, you have access to
+    // a publicly-verifiable, unbiasable and decentralised randomness
 
     Ok(Response::default())
 }
