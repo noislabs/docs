@@ -19,3 +19,4 @@
   * [📦 Nois Toolbox](use-cases/for-dapp-developers/nois-toolbox.md)
 * [🏗 For Nois Developers](use-cases/for-nois-developers.md)
 * [🔐 For validators](use-cases/for-validators.md)
+* [🤖 For Bot Runners](use-cases/for-bot-runners.md)
