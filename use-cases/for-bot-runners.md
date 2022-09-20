@@ -7,6 +7,7 @@ docker login
 ```
 
 ```bash
+#Make sure you have tokens in your wallet
 export MNEMONIC='<YOUR_MNEMONICS_HERE>'
 #check https://docs.nois.network/networks-and-contracts. nois-oracle contract
 export NOIS_CONTRACT=nois1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrq5z5suf
