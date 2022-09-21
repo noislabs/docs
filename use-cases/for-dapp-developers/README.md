@@ -5,7 +5,7 @@
 {% hint style="info" %}
 **Good to know:** This section is intended for developers who are building applications that consume the randomness.
 
-If you are looking on the documentation to contribute to Nois then check the [for-nois-developers.md](../for-nois-developers.md "mention")
+If you are looking on the documentation to contribute to Nois then check [for-nois-developers.md](../for-nois-developers.md "mention")
 {% endhint %}
 
 From a DAPP developer's perspective, getting randomness is as simple as 2 handlers in the contract.\
