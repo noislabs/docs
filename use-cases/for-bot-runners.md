@@ -1,3 +1,10 @@
+---
+description: >-
+  Bots bring randomness from drand (https://drand.love/) to the nois blockchain.
+  That's the only thing the bot does. After that once that randomness is
+  onchain, it will be sold to Dapps accross the cosm
+---
+
 # 🤖 For Bot Runners
 
 Install docker from this [link](https://docs.docker.com/engine/install/ubuntu/)
