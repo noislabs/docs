@@ -20,3 +20,4 @@
 * [🏗 For Nois Developers](use-cases/for-nois-developers.md)
 * [🔐 For validators](use-cases/for-validators.md)
 * [🤖 For Bot Runners](use-cases/for-bot-runners.md)
+* [🌉 For IBC relayer operators](use-cases/for-ibc-relayer-operators.md)
