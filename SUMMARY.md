@@ -11,7 +11,7 @@
 
 * [🌐 Networks and contracts](networks-and-contracts/README.md)
   * [⛓ Relayed Chains](networks-and-contracts/relayed-chains.md)
-  * [Using the faucet](networks-and-contracts/using-the-faucet.md)
+  * [🚰 Using the faucet](networks-and-contracts/using-the-faucet.md)
 
 ## Use Cases
 
