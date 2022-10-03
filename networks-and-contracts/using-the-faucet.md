@@ -15,6 +15,6 @@ curl -X POST \
 
 ### With Postman
 
-See the folling screenshot:
+See the following screenshot:
 
 <figure><img src="../.gitbook/assets/postman_faucet.png" alt=""><figcaption></figcaption></figure>
