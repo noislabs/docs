@@ -1,6 +1,6 @@
 # 📃 Contract implementation
 
-Double dice game example [https://github.com/noislabs/double-dice-demo](https://github.com/noislabs/double-dice-demo)​
+Double dice game example [https://github.com/noislabs/nois-dapp-examples](https://github.com/noislabs/nois-dapp-examples)​
 
 #### Import the nois packages <a href="#import-the-nois-packages" id="import-the-nois-packages"></a>
 
