@@ -42,7 +42,7 @@ sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.05'"${DENOM}"'"/' $CON
     sed -i 's/^timeout_commit =.*$/timeout_commit = "3s"/' $CONFIG_DIR/config.toml
 ```
 
-&#x20; Check the installation
+Check the installation (also creates folder `$HOME/.noisd`):
 
 ```shell
 noisd version
@@ -51,6 +51,3 @@ noisd version
 The rest is similar to running a standard cosmos validator. You can check this cosmos hub docs [link](https://hub.cosmos.network/main/validators/validator-setup.html) for more details
 
 For the faucet, rpc links, permanent peers and similar details visit [networks-and-contracts](../networks-and-contracts/ "mention")
-
-
-
