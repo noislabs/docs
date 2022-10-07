@@ -14,6 +14,7 @@ Clone the nois full node repository
 ```shell
 git clone https://github.com/noislabs/full-node.git
 cd full-node/full-node/
+git checkout nois-testnet-003
 ```
 
 Build and install the noisd binary
