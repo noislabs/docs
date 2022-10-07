@@ -6,7 +6,7 @@ Double dice game example [https://github.com/noislabs/nois-dapp-examples](https:
 
 First thing is to import the packages. Add this to your cargo.toml under dependencies.
 
-{% code title="cargo.toml" %}
+{% code title="# in cargo.toml" %}
 ```rust
 [dependencies]
 nois = "0.5.0"
@@ -17,7 +17,7 @@ nois = "0.5.0"
 
 We need to add the address of the nois-proxy. One common way to do it is during the instantiation of the contract.
 
-{% code title="state.rs" %}
+{% code title="# in state.rs" %}
 ```rust
 pub const NOIS_PROXY: Item<Addr> = Item::new("nois_proxy");
 ```
@@ -25,7 +25,7 @@ pub const NOIS_PROXY: Item<Addr> = Item::new("nois_proxy");
 
 import the **nois-proxy**.
 
-{% code title="contract.rs" %}
+{% code title="# in contract.rs" %}
 ```rust
 use crate::state::{NOIS_PROXY};
 ```
@@ -33,7 +33,7 @@ use crate::state::{NOIS_PROXY};
 
 Still in the contract.rs add the instantiation msg which validates the nois-proxy address and stores it
 
-{% code title="contract.rs" %}
+{% code title="# in contract.rs" %}
 ```rust
 pub fn instantiate(
     deps: DepsMut,
@@ -53,13 +53,12 @@ pub fn instantiate(
         .add_attribute("method", "instantiate")
         .add_attribute("owner", info.sender))
 }
-
 ```
 {% endcode %}
 
 Declare the instantiation msg
 
-{% code title="msg.rs" %}
+{% code title="# in msg.rs" %}
 ```rust
 pub struct InstantiateMsg {
    pub nois_proxy: String,
@@ -69,7 +68,7 @@ pub struct InstantiateMsg {
 
 Add the InvalidProxyError in error.rs
 
-{% code title="error.rs" %}
+{% code title="# in error.rs" %}
 ```rust
 #[error("Proxy address is not valid")]
 InvalidProxyAddress,T
@@ -81,7 +80,7 @@ InvalidProxyAddress,T
 In order to request the randomness we need a function whether internal or publicly called. For this tutorial we can make a roll dice msg that will in turn call the getNextRandomness(id) handler.\
 So the RollDice message gets the id as a parameter
 
-{% code title="contract.rs" %}
+{% code title="# in contract.rs" %}
 ```rust
 match msg {
         //RollDice should be called by a player who wants to roll the dice
@@ -95,13 +94,13 @@ match msg {
 In order to request the randomness we need a function whether internal or publicly called. For this tutorial we can make a roll dice msg that will in turn call the getNextRandomness(id) handler.\
 So the RollDice message gets the id as a parameter
 
-{% code title="contract.rs" %}
+{% code title="# in contract.rs" %}
 ```rust
 ExecuteMsg::RollDice { job_id} => execute_roll_dice(deps, env, info, job_id),ExecuteMsg::RollDice { job_id} => execute_roll_dice(deps, env, info, job_id),
 ```
 {% endcode %}
 
-{% code title="msg.rs" %}
+{% code title="# in msg.rs" %}
 ```rust
 pub enum ExecuteMsg {
    RollDice {
@@ -109,13 +108,12 @@ pub enum ExecuteMsg {
        job_id: String,
    },
 }
-
 ```
 {% endcode %}
 
 Call the GetNextRandomness(id) from the triggering function
 
-{% code title="contract.rs" %}
+{% code title="# in contract.rs" %}
 ```rust
 //execute_roll_dice is the function that will trigger the process of requesting randomness.
 //The request from randomness happens by calling the nois-proxy contract
@@ -145,7 +143,7 @@ pub fn execute_roll_dice(
 
 The nois-proxy contract sends the callback on the Receive entrypoint. Therefore, you should add the Receive handler on your ExecuteMsg.
 
-{% code title="contract.rs" %}
+{% code title="# in contract.rs" %}
 ```rust
 //Receive should be called by the proxy contract. The proxy is forwarding the randomness from the nois chain to this contract.
 ExecuteMsg::Receive { callback } => execute_receive(deps, env, info, callback),
@@ -154,7 +152,7 @@ ExecuteMsg::Receive { callback } => execute_receive(deps, env, info, callback),
 
 and in msg.rs import NoisCallbackMsg from the nois-proxy package that we included at the beginning and update the Execute msg.
 
-{% code title="msg.ts" %}
+{% code title="# in msg.ts" %}
 ```rust
 use nois::NoisCallback;
 
@@ -170,7 +168,7 @@ pub enum ExecuteMsg {
 
 In the receive function you can implement whatever you would like to do with the randomness. You directly use the randomness as a raw hexadecimal or you can apply some common randomness functionalities that you get from the Nois toolbox crate.
 
-{% code title="contract.rs" %}
+{% code title="# in contract.rs" %}
 ```rust
 pub fn execute_receive(
     deps: DepsMut,
@@ -218,4 +216,3 @@ pub fn execute_receive(
 }
 ```
 {% endcode %}
-
