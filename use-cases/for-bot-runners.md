@@ -1,32 +1,32 @@
 ---
 description: >-
-  Bots bring randomness from drand (https://drand.love/) to the nois blockchain.
-  That's the only thing the bot does. After that once that randomness is
-  onchain, it will be sold to Dapps accross the cosm
+  Bots bring randomness from drand (https://drand.love/) to the Nois blockchain.
+  That's the only thing the bot does. Once that randomness is on chain, it will
+  be offered to Dapps accross the Cosmos.
 ---
 
 # 🤖 For Bot Runners
 
-Install docker from this [link](https://docs.docker.com/engine/install/ubuntu/)
 
-Run the bot
+
+1. Install docker as explained [here](https://docs.docker.com/engine/install/ubuntu/)
+2. Download the latest version of the bot image: `docker pull noislabs/nois-bot:latest`
+3. Run the bot as follows:
 
 <pre class="language-bash"><code class="lang-bash">#Make sure you have tokens in your wallet
 export MNEMONIC='&#x3C;YOUR_MNEMONICS_HERE>'
 #check https://docs.nois.network/networks-and-contracts. nois-oracle contract
-export NOIS_CONTRACT=nois1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrq5z5suf
-export ENDPOINT=http://node-0.noislabs.com:26657/
-export MONIKER=your-beautiful-name
+export NOIS_CONTRACT=nois1j7m4f68lruceg5xq3gfkfdgdgz02vhvlq2p67vf9v3hwdydaat3sajzcy5
+export ENDPOINT=https://rpc-t.nois.nodestake.top/
 <strong>#Many RPCs are available. For more info check discord #validator channel
-</strong>#http://node-0.noislabs.com:26657/
-<strong>#https://nois-testnet.rpc.kjnodes.com/
+</strong><strong>#http://node-0.noislabs.com:26657/
+</strong><strong>#https://nois-testnet.rpc.kjnodes.com/
 </strong>#https://rpc-t.nois.nodestake.top/
 #https://nois.rpc.bccnodes.com/
 #http://nois.cryptech.com.ua:26657/
 
 #edit above values before running the docker
 docker run \
-       -e MONIKER=$MONIKER \
        -e "MNEMONIC=$MNEMONIC" \
        -e PREFIX=nois \
        -e DENOM=unois \
