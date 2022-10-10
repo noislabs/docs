@@ -17,7 +17,7 @@ description: >-
 export MNEMONIC='&#x3C;YOUR_MNEMONICS_HERE>'
 #check https://docs.nois.network/networks-and-contracts. nois-oracle contract
 export NOIS_CONTRACT=nois1j7m4f68lruceg5xq3gfkfdgdgz02vhvlq2p67vf9v3hwdydaat3sajzcy5
-export ENDPOINT=http://node-0.noislabs.com:26657/
+export ENDPOINT=https://rpc.noislabs.com:443
 export MONIKER=your-beautiful-name
 <strong>#Many RPCs are available. For more info check discord #validator channel
 </strong>#http://node-0.noislabs.com:26657/
