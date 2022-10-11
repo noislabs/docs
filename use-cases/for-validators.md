@@ -1,15 +1,25 @@
+---
+description: >-
+  Here you find information how to run a full node as well as produce blocks. If
+  you want to run a sentry, most of the instructions are the same.
+---
+
 # 🔐 For validators
 
-Update your OS
+### Run a full node
+
+We assume you are on some sort of Ubuntu/Debian Linux. Other Linux distributions and macOS works very similar.
+
+1\. Update your OS and install dependencies
 
 ```shell
 apt-get update 
 sudo apt install -y build-essential
 ```
 
-Install go [https://go.dev/doc/install](https://go.dev/doc/install)
+2\. Install go [https://go.dev/doc/install](https://go.dev/doc/install)
 
-Clone the nois full node repository
+3\. Clone the nois full node repository
 
 ```shell
 git clone https://github.com/noislabs/full-node.git
@@ -17,7 +27,7 @@ cd full-node/full-node/
 git checkout nois-testnet-003
 ```
 
-Build and install the noisd binary
+4\. Build and install the noisd binary
 
 ```shell
 # This creates the binary in ./out/noisd and move it
@@ -27,7 +37,13 @@ Build and install the noisd binary
 mv out/noisd /usr/local/bin
 ```
 
-Adapt the block time and minimum gas prices parameters
+5\. Check the installation (also creates folder `$HOME/.noisd`):
+
+```shell
+noisd version
+```
+
+6\. Adapt the block time and minimum gas prices parameters
 
 ```shell
 export DENOM=unois
@@ -40,12 +56,6 @@ sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.05'"${DENOM}"'"/' $CON
   && sed -i 's/^timeout_precommit =.*$/timeout_precommit = "1s"/' $CONFIG_DIR/config.toml \
   && sed -i 's/^timeout_precommit_delta =.*$/timeout_precommit_delta = "200ms"/' $CONFIG_DIR/config.toml \
   && sed -i 's/^timeout_commit =.*$/timeout_commit = "3s"/' $CONFIG_DIR/config.toml
-```
-
-Check the installation (also creates folder `$HOME/.noisd`):
-
-```shell
-noisd version
 ```
 
 The rest is similar to running a standard cosmos validator. You can check this cosmos hub docs [link](https://hub.cosmos.network/main/validators/validator-setup.html) for more details
