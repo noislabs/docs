@@ -10,16 +10,19 @@ description: >-
 
 We assume you are on some sort of Ubuntu/Debian Linux. Other Linux distributions and macOS works very similar.
 
-1\. Update your OS and install dependencies
+#### 1. Update your OS and install dependencies
 
 ```shell
-apt-get update 
-sudo apt install -y build-essential
+sudo apt update
+# Maybe also this if you want: sudo apt upgrade -y && reboot
+sudo apt install -y build-essential git
 ```
 
-2\. Install go [https://go.dev/doc/install](https://go.dev/doc/install)
+#### 2. Install Go
 
-3\. Clone the nois full node repository
+This way: [https://go.dev/doc/install](https://go.dev/doc/install)
+
+#### 3. Clone the nois full node repository
 
 ```shell
 git clone https://github.com/noislabs/full-node.git
@@ -27,7 +30,7 @@ cd full-node/full-node/
 git checkout nois-testnet-003
 ```
 
-4\. Build and install the noisd binary
+#### 4. Build and install the noisd binary
 
 ```shell
 # This creates the binary in ./out/noisd and move it
@@ -37,19 +40,22 @@ git checkout nois-testnet-003
 mv out/noisd /usr/local/bin
 ```
 
-5\. Check the installation (also creates folder `$HOME/.noisd`):
+#### 5. Check the installation (also creates folder `$HOME/.noisd`):
 
 ```shell
 noisd version
 ```
 
-6\. Adapt the block time and minimum gas prices parameters
+#### 6. Adapt the block time and minimum gas prices parameters
 
 ```shell
-export DENOM=unois
-export CONFIG_DIR=$HOME/.noisd/config
-sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.05'"${DENOM}"'"/' $CONFIG_DIR/app.toml \
-  && sed -i 's/^timeout_propose =.*$/timeout_propose = "2s"/' $CONFIG_DIR/config.toml \
+export CONFIG_DIR="$HOME/.noisd/config"
+
+# Update app.toml
+sed -i 's/minimum-gas-prices =.*$/minimum-gas-prices = "0.05unois"/' $CONFIG_DIR/app.toml
+
+# Update config.toml
+sed -i 's/^timeout_propose =.*$/timeout_propose = "2s"/' $CONFIG_DIR/config.toml \
   && sed -i 's/^timeout_propose_delta =.*$/timeout_propose_delta = "500ms"/' $CONFIG_DIR/config.toml \
   && sed -i 's/^timeout_prevote =.*$/timeout_prevote = "1s"/' $CONFIG_DIR/config.toml \
   && sed -i 's/^timeout_prevote_delta =.*$/timeout_prevote_delta = "500ms"/' $CONFIG_DIR/config.toml \
@@ -58,6 +64,12 @@ sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.05'"${DENOM}"'"/' $CON
   && sed -i 's/^timeout_commit =.*$/timeout_commit = "2s"/' $CONFIG_DIR/config.toml
 ```
 
-The rest is similar to running a standard cosmos validator. You can check this cosmos hub docs [link](https://hub.cosmos.network/main/validators/validator-setup.html) for more details
+#### 7. Download the genesis file
 
-For the faucet, rpc links, permanent peers and similar details visit [networks-and-contracts](../networks-and-contracts/ "mention")
+```shell
+wget -O "$HOME/.noisd/config/genesis.json" https://raw.githubusercontent.com/noislabs/testnets/main/nois-testnet-003/genesis.json
+```
+
+#### 8. Draw the rest of the fucking owl
+
+The rest is similar to running a standard cosmos validator. You can check this cosmos hub docs [link](https://hub.cosmos.network/main/validators/validator-setup.html) for more details. For the faucet, rpc links, permanent peers and similar details visit [networks-and-contracts](../networks-and-contracts/ "mention")
