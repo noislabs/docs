@@ -2,6 +2,11 @@
 
 The faucet can be used via an HTTP POST request.
 
+### From discord
+
+Go to #faucet channel on nois discord [https://chat.nois.network ](https://chat.nois.network)and type \
+`!faucet <YOUR ADDRESS>`
+
 ### With curl
 
 From command line you can use curl:
