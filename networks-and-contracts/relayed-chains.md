@@ -2,17 +2,17 @@
 
 {% tabs %}
 {% tab title="elgafar-1" %}
-| Contracts                                                          | Address                                                          | Version |
-| ------------------------------------------------------------------ | ---------------------------------------------------------------- | ------- |
-| nois-proxy                                                         | stars1qec8jd0h4uxxz2eshekzp2wy49zvjdvskgre6f9yxrce2glczngsqhf95k | v0.6.0  |
-| [double-dice-roll](https://github.com/noislabs/nois-dapp-examples) | stars1nt4d44m9lpgzxztdwqaueed7shhzmhwv6ahkaf76uudacxs8rmjsedh49d | v0.3.0  |
+| Contracts                                                          | Address                                                              | Version |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------- | ------- |
+| nois-proxy                                                         | **stars1caqz4ye9uwm5mtqnyg6vtvqq2gkawlc95vn2c3ede3xxhsrk55fsggxw3u** | v0.7.2  |
+| [double-dice-roll](https://github.com/noislabs/nois-dapp-examples) | **stars1u62rtu66qeddpjsq50m7zv95gjfg20yz50fdja6s4rxe4qtnpstsv9dwng** | v0.4.3  |
 {% endtab %}
 
 {% tab title="uni-5" %}
-| Contracts                                                          | Address                                                         | Version |
-| ------------------------------------------------------------------ | --------------------------------------------------------------- | ------- |
-| nois-proxy                                                         | juno1e7vs76markshus39eyfefh2y3t9guge4t0kvqya3q6vamgsejh4q8lxtq9 | v0.6.0  |
-| [double-dice-roll](https://github.com/noislabs/nois-dapp-examples) | juno19pam0vncl2s3etn4e7rqxvpq2gkyu9wg2czfvsph6dgvp00fsrxqzjt5sr | v0.3.0  |
+| Contracts                                                          | Address                                                             | Version |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------- | ------- |
+| nois-proxy                                                         | **juno1tquqqdvlv3fwu5u6evpt7e4ss47zczug8tq4czjucgx8dulkhjxsegfuds** | v0.7.2  |
+| [double-dice-roll](https://github.com/noislabs/nois-dapp-examples) | **juno1e7p6k4c0l52zperyhd6nfx053yrdgjw4k6kunszhk9j0smedgtzs27nrkh** | v0.4.3  |
 {% endtab %}
 
 {% tab title="euphoria-1" %}
