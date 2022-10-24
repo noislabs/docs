@@ -16,7 +16,7 @@ Drand-bots are never slashed and do not need to put any collateral simply becaus
 {% endhint %}
 
 {% hint style="warning" %}
-Although drand-bots cannot impact the outcome of the randomness, they can impact the availability of the randomness by stopping to work. or failing to submit to the nois-chain. And this is why they are a critical piece of nois.
+Although drand-bots cannot impact the outcome of the randomness, they can impact the availability of the randomness by stopping to work. or failing to submit to the nois-chain. And this is why they are incentivised and constitute a critical piece of nois.
 {% endhint %}
 
 ### Using a Docker image
