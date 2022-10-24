@@ -7,6 +7,18 @@ description: >-
 
 # 🤖 For Bot Runners
 
+{% hint style="info" %}
+Drand-bots do not and cannot generate randomness. The simply relay it from drand to nois chains.
+{% endhint %}
+
+{% hint style="info" %}
+Drand-bots are never slashed and do not need to put any collateral simply because they cannot cheat.
+{% endhint %}
+
+{% hint style="info" %}
+Although drand-bots cannot impact the outcome of the randomness, they can impact the availability of the randomness by stopping to work. or failing to submit to the nois-chain. And this is why they are a critical piece of nois.
+{% endhint %}
+
 ### Using a Docker image
 
 1. Install Docker as explained [here](https://docs.docker.com/engine/install/ubuntu/)
