@@ -9,7 +9,7 @@ First thing is to import the packages. Add this to your cargo.toml under depende
 {% code title="# in cargo.toml" %}
 ```rust
 [dependencies]
-nois = "0.5.0"
+nois = "0.5.1"
 ```
 {% endcode %}
 
@@ -131,8 +131,8 @@ pub fn execute_roll_dice(
         //The job id is needed to know what randomness we are referring to upon reception in the callback
         //In this example, the job_id represents one round of dice rolling.
         msg: to_binary(&ProxyExecuteMsg::GetNextRandomness { job_id })?,
-        //In this example the randomness is for free. You don't need to send any funds to request randomness
-        funds: vec![],
+        //In this example the randomness is sent from the gambler, but you may also send the funds from the contract balance
+        funds: info.funds, // Just pass on all funds we got
     });
     Ok(response)
 }
