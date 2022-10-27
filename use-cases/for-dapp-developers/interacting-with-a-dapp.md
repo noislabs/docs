@@ -21,19 +21,29 @@ Store the contract
 export CODE_ID=$(junod tx wasm store \
        target/wasm32-unknown-unknown/release/double_dice_roll.wasm \
        --from juno-key \
-       --chain-id uni-3 \
+       --chain-id uni-5 \
        --gas=auto \
        --gas-adjustment 1.4  \
        --gas-prices 0.025ujunox \
        --broadcast-mode=block \
        --node=https://rpc.uni.juno.deuslabs.fi:443 -y \
-       |yq -r ".logs[0].events[1].attributes[1].value" \
-       ) 
+       |yq -r ".logs[0].events[1].attributes[1].value" ) 
 ```
 
-```
-// instantiate
-```
+<pre class="language-shell"><code class="lang-shell"><strong>export NOIS_PROXY=juno1tquqqdvlv3fwu5u6evpt7e4ss47zczug8tq4czjucgx8dulkhjxsegfuds
+</strong><strong>export DOUBLE_DICE_ROLL_CONTRACT=$(junod \
+</strong>       tx wasm instantiate $CODE_ID \
+       '{"nois_proxy": "'"$NOIS_PROXY"'"}' \
+       --label=double-dice \
+       --no-admin \
+       --from juno-key \
+       --chain-id uni-3 \
+       --gas=auto \
+       --gas-adjustment 1.4 \
+       --fees=1000000ujunox \
+       --broadcast-mode=block \
+       --node=https://rpc.uni.juno.deuslabs.fi:443 -y \
+       |yq -r '.logs[0].events[0].attributes[0].value' )</code></pre>
 
 Request randomness
 
@@ -51,6 +61,9 @@ junod tx wasm execute $DOUBLE_DICE_ROLL_CONTRACT \
 
 Query the randomness
 
-```
-// Query the randomness
+```shell
+junod query wasm  contract-state  smart \
+            $DOUBLE_DICE_ROLL_CONTRACT  \
+            '{"get_history_of_rounds": {}}' \
+            --node=https://rpc.uni.juno.deuslabs.fi:443
 ```
