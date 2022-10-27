@@ -30,6 +30,8 @@ export CODE_ID=$(junod tx wasm store \
        |yq -r ".logs[0].events[1].attributes[1].value" ) 
 ```
 
+Instantiate the contract
+
 <pre class="language-shell"><code class="lang-shell"><strong>export NOIS_PROXY=juno1tquqqdvlv3fwu5u6evpt7e4ss47zczug8tq4czjucgx8dulkhjxsegfuds
 </strong><strong>export DOUBLE_DICE_ROLL_CONTRACT=$(junod \
 </strong>       tx wasm instantiate $CODE_ID \
