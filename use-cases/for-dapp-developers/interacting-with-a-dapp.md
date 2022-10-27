@@ -45,7 +45,7 @@ export CODE_ID=$(junod tx wasm store \
        --node=https://rpc.uni.juno.deuslabs.fi:443 -y \
        |yq -r '.logs[0].events[0].attributes[0].value' )</code></pre>
 
-Request randomness
+Request randomness (ie. roll the dice)
 
 ```shell
 export DOUBLE_DICE_ROLL_CONTRACT=juno1e7p6k4c0l52zperyhd6nfx053yrdgjw4k6kunszhk9j0smedgtzs27nrkh
