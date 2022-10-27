@@ -1,4 +1,4 @@
-# Interacting with a DAPP
+# 🎲 Interacting with a DAPP
 
 This document intends to help developers test the example contracts that are provided by nois
 

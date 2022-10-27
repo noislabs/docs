@@ -17,7 +17,7 @@
 
 * [🛠 For DAPP Developers](use-cases/for-dapp-developers/README.md)
   * [📃 Contract implementation](use-cases/for-dapp-developers/contract-implementation.md)
-  * [Interacting with a DAPP](use-cases/for-dapp-developers/interacting-with-a-dapp.md)
+  * [🎲 Interacting with a DAPP](use-cases/for-dapp-developers/interacting-with-a-dapp.md)
   * [📦 Nois Toolbox](use-cases/for-dapp-developers/nois-toolbox.md)
 * [🏗 For Nois Developers](use-cases/for-nois-developers.md)
 * [🔐 For validators](use-cases/for-validators.md)
