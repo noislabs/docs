@@ -20,7 +20,7 @@ Store the contract
 ```shell
 export CODE_ID=$(junod tx wasm store \
        target/wasm32-unknown-unknown/release/double_dice_roll.wasm \
-       --from juno-key \
+       --from <your-key> \
        --chain-id uni-5 \
        --gas=auto \
        --gas-adjustment 1.4  \
@@ -38,7 +38,7 @@ Instantiate the contract
        '{"nois_proxy": "'"$NOIS_PROXY"'"}' \
        --label=double-dice \
        --no-admin \
-       --from juno-key \
+       --from &#x3C;your-key> \
        --chain-id uni-3 \
        --gas=auto \
        --gas-adjustment 1.4 \
