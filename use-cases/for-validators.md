@@ -15,7 +15,7 @@ We assume you are on some sort of Ubuntu/Debian Linux. Other Linux distributions
 ```shell
 sudo apt update
 # Maybe also this if you want: sudo apt upgrade -y && reboot
-sudo apt install -y build-essential git jq
+sudo apt install -y make gcc build-essential git jq
 ```
 
 #### 2. Install Go
