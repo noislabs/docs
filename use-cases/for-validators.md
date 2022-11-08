@@ -15,7 +15,7 @@ We assume you are on some sort of Ubuntu/Debian Linux. Other Linux distributions
 ```shell
 sudo apt update
 # Maybe also this if you want: sudo apt upgrade -y && reboot
-sudo apt install -y build-essential git
+sudo apt install -y build-essential git jq
 ```
 
 #### 2. Install Go
@@ -37,7 +37,7 @@ git checkout nois-testnet-003
 # to your /usr/local/bin folder.
 # Alternatively any other installation folder in $PATH can be used.
 ./build.sh
-mv out/noisd /usr/local/bin
+sudo mv out/noisd /usr/local/bin
 ```
 
 #### 5. Check the installation (also creates folder `$HOME/.noisd`):
