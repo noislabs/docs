@@ -81,6 +81,13 @@ Takes a randomness and a key. Returns an arbitrary number of sub-randomnesses. T
 use nois::sub_randomness_with_key;
 
 
+let mut provider = nois::sub_randomness_with_key(randomness, "Key");
+
+let dice1_subrandomness = provider.provide();
+let dice2_subrandomness = provider.provide();
+
+let dice1_result = nois::int_in_range(dice1_subrandomness, 1..7);
+let dice2_result = nois::int_in_range(dice2_subrandomness, 1..7);
 ```
 
 ### sub\_randomness\_with\_key
@@ -92,4 +99,11 @@ This is equivalent to calling \[`sub_randomness_with_key`] with key `b"_^default
 use nois::sub_randomness;
 
 
+let mut provider = nois::sub_randomness(randomness);
+
+let dice1_subrandomness = provider.provide();
+let dice2_subrandomness = provider.provide();
+
+let dice1_result = nois::int_in_range(dice1_subrandomness, 1..7);
+let dice2_result = nois::int_in_range(dice2_subrandomness, 1..7);
 ```
