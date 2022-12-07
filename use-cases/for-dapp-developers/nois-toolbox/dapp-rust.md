@@ -78,16 +78,16 @@ assert_ne!(data, vec![1, 2, 3, 4]);
 Takes a randomness and a key. Returns an arbitrary number of sub-randomnesses. The key is mixed into the randomness such that calling this function with different keys leads to different outputs. Calling it with the same key and randomness leads to the same outputs.
 
 ```rust
-use nois::sub_randomness_with_key;
+use nois::{sub_randomness_with_key, int_in_range};
 
 
-let mut provider = nois::sub_randomness_with_key(randomness, "Key");
+let mut provider = sub_randomness_with_key(randomness, "Key");
 
 let dice1_subrandomness = provider.provide();
 let dice2_subrandomness = provider.provide();
 
-let dice1_result = nois::int_in_range(dice1_subrandomness, 1..7);
-let dice2_result = nois::int_in_range(dice2_subrandomness, 1..7);
+let dice1_result = int_in_range(dice1_subrandomness, 1..7);
+let dice2_result = int_in_range(dice2_subrandomness, 1..7);
 ```
 
 ### sub\_randomness\_with\_key
@@ -96,14 +96,14 @@ Takes a randomness and a key. Returns an arbitrary number of sub-randomnesses.\
 This is equivalent to calling \[`sub_randomness_with_key`] with key `b"_^default^_"`.
 
 ```rust
-use nois::sub_randomness;
+use nois::{sub_randomness, int_in_range};
 
 
-let mut provider = nois::sub_randomness(randomness);
+let mut provider = sub_randomness(randomness);
 
 let dice1_subrandomness = provider.provide();
 let dice2_subrandomness = provider.provide();
 
-let dice1_result = nois::int_in_range(dice1_subrandomness, 1..7);
-let dice2_result = nois::int_in_range(dice2_subrandomness, 1..7);
+let dice1_result = int_in_range(dice1_subrandomness, 1..7);
+let dice2_result = int_in_range(dice2_subrandomness, 1..7);
 ```
