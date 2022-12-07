@@ -57,7 +57,7 @@ export MNEMONIC='<YOUR_MNEMONICS_HERE>'
 
 docker run \
             -e "MNEMONIC=$MNEMONIC" \
-            noislabs/nois-relayer:juno-1-juno1380xsz7qnanpn9h3zdy97yp5ga98hw32kkswl2wu6qgv8m4g9lms3kjn8y \
+            noislabs/nois-relayer:juno-1-<CONTRACT> \
             ibc-relayer start \
             --src-connection=<CONNECTION> \
             --dest-connection=<CONNECTION>\
