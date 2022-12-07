@@ -41,25 +41,23 @@ export MNEMONIC='<YOUR_MNEMONICS_HERE>'
 
 docker run \
             -e "MNEMONIC=$MNEMONIC" \
-            docker.io/noislabs/nois-relayer:uni-5-juno1v82su97skv6ucfqvuvswe0t5fph7pfsrtraxf0x33d8ylj5qnrysdvkc95 \
+            docker.io/noislabs/nois-relayer:uni-5-juno1tquqqdvlv3fwu5u6evpt7e4ss47zczug8tq4czjucgx8dulkhjxsegfuds \
             ibc-relayer start \
-            --src-connection=connection-267 \
-            --dest-connection=connection-28 \
+            --src-connection=connection-39 \
+            --dest-connection=connection-12 \
             --poll 3
 ```
 
 #### &#x20;juno-1 => nois-testnet-003 relay
-
-[https://ibc.nois.network/connections/connection-28/channels/wasm.nois1s9ly26evj8ehurptws5d6dm4a9g2z0htcqvlvn95kc30eucl4s5sd8hkgp:channel-20](https://ibc.nois.network/connections/connection-28/channels/wasm.nois1s9ly26evj8ehurptws5d6dm4a9g2z0htcqvlvn95kc30eucl4s5sd8hkgp:channel-20)
 
 ```shell
 export MNEMONIC='<YOUR_MNEMONICS_HERE>'
 
 docker run \
             -e "MNEMONIC=$MNEMONIC" \
-            noislabs/nois-relayer:juno-1-<CONTRACT> \
+            noislabs/nois-relayer:juno-1-juno13qw7myq026jesj5jutzzxmlfemc7468n8dp7vty7zlw8w08cyxuqfsvxh3 \
             ibc-relayer start \
-            --src-connection=<CONNECTION> \
-            --dest-connection=<CONNECTION>\
+            --src-connection=connection-255 \
+            --dest-connection=connection-16 \
             --poll 3
 ```
