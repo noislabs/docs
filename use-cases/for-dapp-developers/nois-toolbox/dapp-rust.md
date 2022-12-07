@@ -1,2 +1,2 @@
-# ⛓ DAPP - Rust
+# 📃 DAPP - Rust
 
