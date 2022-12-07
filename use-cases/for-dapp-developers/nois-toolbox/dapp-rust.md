@@ -72,3 +72,24 @@ shuffle(randomness, &mut data);
 assert_eq!(data.len(), 4);
 assert_ne!(data, vec![1, 2, 3, 4]);
 ```
+
+### sub\_randomness\_with\_key
+
+Takes a randomness and a key. Returns an arbitrary number of sub-randomnesses. The key is mixed into the randomness such that calling this function with different keys leads to different outputs. Calling it with the same key and randomness leads to the same outputs.
+
+```rust
+use nois::sub_randomness_with_key;
+
+
+```
+
+### sub\_randomness\_with\_key
+
+Takes a randomness and a key. Returns an arbitrary number of sub-randomnesses.\
+This is equivalent to calling \[`sub_randomness_with_key`] with key `b"_^default^_"`.
+
+```rust
+use nois::sub_randomness;
+
+
+```
