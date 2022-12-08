@@ -11,11 +11,15 @@ Next to providing the randomness, Nois offers a set of tooling to help developer
 \
 Sometimes it can be challenging to manipulate randomness and you can end up with a randomness that follows a different distribution from what is intended or you can also unintentionally lower the entropy of the original randomness. This is why Nois provides this well tested, standard and opensource toolbox that everyone can contribute to and maintain. This way it is in the interest of all that any bug is quickly fixed and the efforts of 1 project contribute to the common good.
 
-\----------------------------------------------------------------------------------------------------
 
-The Nois Toolbox can be compiled to JavaScript via WebAssembly. This way you can simulate the outputs for every randomness value. The results match exactly those of CosmWasm contracts using the same tools. The toolbox is available in this github repository [https://github.com/noislabs/nois](https://github.com/noislabs/nois) and two artifacts are published. \
-\- The rust crate: [https://crates.io/crates/nois](https://crates.io/crates/nois)\
-\- The npm package: [https://www.npmjs.com/package/nois](https://www.npmjs.com/package/nois)&#x20;
+
+The Nois Toolbox can be compiled to JavaScript via WebAssembly. This way you can simulate the outputs for every randomness value. The results match exactly those of CosmWasm contracts using the same tools. The toolbox is available in this github repository [https://github.com/noislabs/nois](https://github.com/noislabs/nois) and two artifacts are published.&#x20;
+
+* \- The rust crate: [https://crates.io/crates/nois](https://crates.io/crates/nois)
+
+\
+\
+\-&#x20;
 
 If you want to use the nois-toolbox in your contract all you have to do is import the nois crate. If you want to verify, play or simulate the randomness offchain on a script or a UI on a browser instead you can use the nois npm package.
 

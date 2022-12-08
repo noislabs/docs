@@ -25,3 +25,10 @@
 * [🔐 For validators](use-cases/for-validators.md)
 * [🤖 For Bot Runners](use-cases/for-bot-runners.md)
 * [🌉 For IBC relayer operators](use-cases/for-ibc-relayer-operators.md)
+
+## ❓ FAQ
+
+* [👶 5 year old kid](faq/5-year-old-kid.md)
+* [🕸 Web3 user](faq/web3-user.md)
+* [👩💻 Techie](faq/techie.md)
+* [🤑 Investor](faq/investor.md)
