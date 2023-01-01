@@ -9,7 +9,7 @@ First thing is to import the packages. Add this to your cargo.toml under depende
 {% code title="# in cargo.toml" %}
 ```rust
 [dependencies]
-nois = "0.5.1"
+nois = "0.6.0"
 ```
 {% endcode %}
 
@@ -141,12 +141,12 @@ pub fn execute_roll_dice(
 
 #### Receiving the randomness <a href="#import-the-nois-packages" id="import-the-nois-packages"></a>
 
-The nois-proxy contract sends the callback on the Receive entrypoint. Therefore, you should add the Receive handler on your ExecuteMsg.
+The nois-proxy contract sends the callback on the NoisReceive entrypoint. Therefore, you should add the Receive handler on your ExecuteMsg.
 
 {% code title="# in contract.rs" %}
 ```rust
-//Receive should be called by the proxy contract. The proxy is forwarding the randomness from the nois chain to this contract.
-ExecuteMsg::Receive { callback } => execute_receive(deps, env, info, callback),
+//NoisReceive should be called by the proxy contract. The proxy is forwarding the randomness from the nois chain to this contract.
+ExecuteMsg::NoisReceive { callback } => execute_nois_receive(deps, env, info, callback),
 ```
 {% endcode %}
 
@@ -170,7 +170,7 @@ In the receive function you can implement whatever you would like to do with the
 
 {% code title="# in contract.rs" %}
 ```rust
-pub fn execute_receive(
+pub fn execute_nois_receive(
     deps: DepsMut,
     _env: Env,
     _info: MessageInfo,
@@ -204,10 +204,10 @@ pub fn execute_receive(
         .to_array()
         .map_err(|_| ContractError::InvalidRandomness)?;
     //ints_in_range provides a list of random numbers following a uniform distribution within a range.
-    //in this case it will provide uniformly randomized numbers between 1 and 6
-    let [dice_outcome_1, dice_outcome_2] = ints_in_range(randomness, 1..=6);
+    //in this case it will provide 2 uniformly randomized numbers between 1 and 6
+    let double_dice_outcome = ints_in_range(randomness, 2, 1, 6);
     //summing the dice to fit the real double dice probability distribution from 2 to 12
-    let double_dice_outcome = dice_outcome_1 + dice_outcome_2;
+    let double_dice_outcome = double_dice_outcome.iter().sum();
 
     //Congrats, you have access to
     // a publicly-verifiable, unbiasable and decentralised randomness
