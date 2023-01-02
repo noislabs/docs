@@ -89,17 +89,6 @@ match msg {
 ```
 {% endcode %}
 
-#### Triggering the randomness request <a href="#import-the-nois-packages" id="import-the-nois-packages"></a>
-
-In order to request the randomness we need a function whether internal or publicly called. For this tutorial we can make a roll dice msg that will in turn call the getNextRandomness(id) handler.\
-So the RollDice message gets the id as a parameter
-
-{% code title="# in contract.rs" %}
-```rust
-ExecuteMsg::RollDice { job_id} => execute_roll_dice(deps, env, info, job_id),ExecuteMsg::RollDice { job_id} => execute_roll_dice(deps, env, info, job_id),
-```
-{% endcode %}
-
 {% code title="# in msg.rs" %}
 ```rust
 pub enum ExecuteMsg {
